@@ -65,4 +65,4 @@ To move from simulation to real-world hardware deployment on the ZedBoard, the f
 This project is licensed under the **MIT License**.
 
 ## ✍️ Author
-**[Divyansh Tripathi]** *Electrical Engineering Undergraduate | Aspiring Digital VLSI Engineer*
+**Divyansh Tripathi** *Electrical Engineering Undergraduate | Aspiring Digital VLSI Engineer*
