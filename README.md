@@ -1,11 +1,11 @@
 # Pipelined Image Convolution Accelerator
 
 ## 📌 Overview
-This repository contains a high-performance, modular **RTL implementation** of a 2D convolution engine designed for real-time image processing. The architecture is fully parameterized, allowing for variable kernel sizes and image resolutions, optimized for deployment on the **Xilinx ZedBoard (Zynq-7000)**.
+This repository contains a high-performance, modular **RTL implementation** of a 2D convolution engine designed for real-time image processing. The architecture is fully parameterized, allowing for variable kernel sizes and image resolutions.
 
 ## 🚀 Key Features
 * **Parameterized Design**: Configurable kernel dimensions (3x3, 5x5, etc.) and data bit-widths via Verilog parameters.
-* **Pipelined Architecture**: Achieves a throughput of **1 pixel per clock cycle** using a streaming data path.
+* **Pipelined Architecture**: Achieved a throughput of **1 pixel per clock cycle** using a streaming data path.
 * **Hardware Optimized**: Efficiently utilizes dedicated **DSP48 slices** for arithmetic and **Block RAM** for line buffering.
 * **Robust Verification**: Includes a comprehensive testbench suite capable of processing real `.bmp` image files through Verilog File I/O.
 
@@ -21,8 +21,8 @@ The design utilizes a **Sliding Window Architecture** to minimize external memor
 
 ---
 
-## 📊 Implementation Results (Target: ZedBoard)
-Post-Implementation results confirm the design meets high-speed timing constraints with minimal resource overhead.
+## 📊 Implementation Results (Post-Route)
+The design successfully passed **Implementation** (Synthesis and Routing) in Xilinx Vivado, targeting the **ZedBoard (Zynq-7000)**. The results confirm the design meets high-speed timing constraints with minimal resource overhead.
 
 ### **Resource Utilization**
 | Resource | Used | Available | Utilization |
@@ -36,12 +36,12 @@ Post-Implementation results confirm the design meets high-speed timing constrain
 ### **Timing Summary**
 * **Worst Negative Slack (WNS)**: 0.592 ns (Met)
 * **Total Negative Slack (TNS)**: 0.000 ns
-* **Clock Frequency**: 100 MHz
+* **Clock Frequency**: 100 MHz (Target)
 
 ---
 
 ## 🖼️ Verification Results
-The design was verified by applying a **Sobel Edge Detection** filter to the standard 512x512 "Lena" grayscale image. The accelerator successfully generated directional gradients and the final edge-detected output.
+The design was verified via behavioral simulation by applying a **Sobel Edge Detection** filter to the standard 512x512 "Lena" grayscale image.
 
 | Input Image | Sobel Combined Output |
 | :---: | :---: |
@@ -49,15 +49,20 @@ The design was verified by applying a **Sobel Edge Detection** filter to the sta
 
 ---
 
+## 🛠️ Future Work & Roadmap
+To move from simulation to real-world hardware deployment on the ZedBoard, the following steps are planned:
+* **AXI4-Stream Wrapper**: Encapsulate the RTL core with an AXI4-Stream interface for standard SoC compatibility.
+* **DMA Integration**: Utilize **Zynq DMA** to transfer image data from DDR memory to the Programmable Logic (PL) at high speeds.
+* **Bare-Metal Application**: Develop a C/C++ driver to control the accelerator and process images in real-time.
+
 ## 📂 Repository Structure
 * `rtl/`: Synthesizable Verilog source files.
 * `tb/`: Unit and System-level testbenches.
 * `sim/`: Input assets and resulting filtered images.
 * `docs/`: Implementation reports and timing summaries.
 
-## 🛠️ How to Run
-1.  Clone the repo: `git clone <repo-url>`
-2.  Open **Vivado 2023.x** and create a project for the ZedBoard.
-3.  Add all files in `rtl/` as design sources.
-4.  Add `tb/tb_conv_top_real_image.v` as the top-level simulation source.
-5.  Run **Behavioral Simulation** to generate output images.
+## 📜 License
+This project is licensed under the **MIT License**.
+
+## ✍️ Author
+**[Divyansh Tripathi]** *Electrical Engineering Undergraduate | Aspiring Digital VLSI Engineer*
