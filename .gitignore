@@ -1,0 +1,24 @@
+# Vivado temporary files
+*.log
+*.jou
+*.str
+*.backup
+.Xil/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.srcs/utils_1/
+
+# Compilation and Simulation
+xsim.dir/
+*.pb
+*.wdb
+*.vcd
+xvlog.log
+xelab.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
